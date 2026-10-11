@@ -7,6 +7,7 @@ function App() {
   const [referenceNumber, setReferenceNumber] = useState("");
   const [charge, setCharge] = useState<string>("0");
   const [remarks, setRemarks] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [dateTime, setDateTime] = useState(() => {
     const now = new Date();
@@ -120,6 +121,7 @@ function App() {
     };
 
     try {
+      setIsLoading(true);
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -144,6 +146,8 @@ function App() {
       console.error(error);
 
       alert("Failed to save transaction.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -211,7 +215,11 @@ function App() {
               placeholder="0"
               value={charge}
               onChange={(e) => setCharge(e.target.value)}
-              readOnly={Number(amount) <= 10000}
+              readOnly={
+                transaction !== "LOAD" &&
+                transaction !== "MARELCO" &&
+                Number(amount) <= 10000
+              }
               required
             />
           </div>
@@ -226,7 +234,9 @@ function App() {
             />
           </div>
 
-          <button type="submit">Save Transaction</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Processing..." : "Save Transaction"}
+          </button>
         </form>
       </div>
     </div>

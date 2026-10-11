@@ -5,7 +5,7 @@ function App() {
   const [transaction, setTransaction] = useState("");
   const [amount, setAmount] = useState("");
   const [referenceNumber, setReferenceNumber] = useState("");
-  const [charge, setCharge] = useState<number>(0);
+  const [charge, setCharge] = useState<string>("0");
   const [remarks, setRemarks] = useState("");
 
   const [dateTime, setDateTime] = useState(() => {
@@ -25,50 +25,56 @@ function App() {
   useEffect(() => {
     const value = Number(amount);
 
-   if (value >= 9401) {
-      setCharge(150);
+    // Kapag lumampas sa 10000, manual input na ang charge
+    if (value > 10000) {
+      setCharge("0");
+      return;
+    }
+
+    if (value >= 9401) {
+      setCharge("150");
     } else if (value >= 9001) {
-      setCharge(140);
+      setCharge("140");
     } else if (value >= 8401) {
-      setCharge(135);
+      setCharge("135");
     } else if (value >= 8001) {
-      setCharge(125);
+      setCharge("125");
     } else if (value >= 7401) {
-      setCharge(120);
+      setCharge("120");
     } else if (value >= 7001) {
-      setCharge(110);
+      setCharge("110");
     } else if (value >= 6401) {
-      setCharge(105);
+      setCharge("105");
     } else if (value >= 6001) {
-      setCharge(95);
+      setCharge("95");
     } else if (value >= 5401) {
-      setCharge(90);
+      setCharge("90");
     } else if (value >= 5001) {
-      setCharge(80);
+      setCharge("80");
     } else if (value >= 4401) {
-      setCharge(75);
+      setCharge("75");
     } else if (value >= 4001) {
-      setCharge(65);
+      setCharge("65");
     } else if (value >= 3401) {
-      setCharge(60);
+      setCharge("60");
     } else if (value >= 3001) {
-      setCharge(50);
+      setCharge("50");
     } else if (value >= 2401) {
-      setCharge(45);
+      setCharge("45");
     } else if (value >= 2001) {
-      setCharge(35);
+      setCharge("35");
     } else if (value >= 1401) {
-      setCharge(30);
+      setCharge("30");
     } else if (value >= 1001) {
-      setCharge(20);
+      setCharge("20");
     } else if (value >= 901) {
-      setCharge(15);
+      setCharge("15");
     } else if (value >= 401) {
-      setCharge(10);
+      setCharge("10");
     } else if (value >= 1) {
-      setCharge(5);
+      setCharge("5");
     } else {
-      setCharge(0);
+      setCharge("0");
     }
   }, [amount]);
 
@@ -172,7 +178,8 @@ function App() {
               type="number"
               step="0.01"
               min="0"
-              placeholder="0.00"
+              max="10000"
+              placeholder="0"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               required
@@ -201,9 +208,11 @@ function App() {
               className="charge"
               step="0.01"
               min="0"
-              placeholder="0.00"
+              placeholder="0"
               value={charge}
-              readOnly
+              onChange={(e) => setCharge(e.target.value)}
+              readOnly={Number(amount) <= 10000}
+              required
             />
           </div>
 

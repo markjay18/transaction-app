@@ -25,7 +25,37 @@ function App() {
   useEffect(() => {
     const value = Number(amount);
 
-    if (value >= 2001) {
+   if (value >= 9401) {
+      setCharge(150);
+    } else if (value >= 9001) {
+      setCharge(140);
+    } else if (value >= 8401) {
+      setCharge(135);
+    } else if (value >= 8001) {
+      setCharge(125);
+    } else if (value >= 7401) {
+      setCharge(120);
+    } else if (value >= 7001) {
+      setCharge(110);
+    } else if (value >= 6401) {
+      setCharge(105);
+    } else if (value >= 6001) {
+      setCharge(95);
+    } else if (value >= 5401) {
+      setCharge(90);
+    } else if (value >= 5001) {
+      setCharge(80);
+    } else if (value >= 4401) {
+      setCharge(75);
+    } else if (value >= 4001) {
+      setCharge(65);
+    } else if (value >= 3401) {
+      setCharge(60);
+    } else if (value >= 3001) {
+      setCharge(50);
+    } else if (value >= 2401) {
+      setCharge(45);
+    } else if (value >= 2001) {
       setCharge(35);
     } else if (value >= 1401) {
       setCharge(30);

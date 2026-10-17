@@ -122,6 +122,7 @@ function App() {
 
     try {
       setIsLoading(true);
+
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -130,9 +131,26 @@ function App() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      // Basahin muna ang raw response
+      const responseText = await response.text();
 
-      if (!result.success) {
+      console.log("HTTP Status:", response.status);
+      console.log("API Response:", responseText);
+
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      // I-parse ang JSON response
+      let result;
+
+      try {
+        result = JSON.parse(responseText);
+      } catch {
+        throw new Error("Invalid JSON response from API.");
+      }
+
+      if (result.success !== true) {
         throw new Error(result.message || "Failed to save transaction.");
       }
 
@@ -143,7 +161,7 @@ function App() {
       setReferenceNumber("");
       setRemarks("");
     } catch (error) {
-      console.error(error);
+      console.error("Transaction error:", error);
 
       alert("Failed to save transaction.");
     } finally {
@@ -173,6 +191,7 @@ function App() {
               <option value="CI">CI</option>
               <option value="LOAD">LOAD</option>
               <option value="MARELCO">MARELCO</option>
+              <option value="PLDT">PLDT</option>
             </select>
           </div>
 
@@ -218,6 +237,7 @@ function App() {
               readOnly={
                 transaction !== "LOAD" &&
                 transaction !== "MARELCO" &&
+                transaction !== "PLDT" &&
                 Number(amount) <= 10000
               }
               required

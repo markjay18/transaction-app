@@ -32,45 +32,45 @@ function App() {
       return;
     }
 
-    if (value >= 9401) {
-      setCharge("150");
-    } else if (value >= 9001) {
-      setCharge("140");
-    } else if (value >= 8401) {
+    if (value >= 9500) {
+      setCharge("145");
+    } else if (value >= 9000) {
       setCharge("135");
-    } else if (value >= 8001) {
-      setCharge("125");
-    } else if (value >= 7401) {
+    } else if (value >= 8500) {
+      setCharge("130");
+    } else if (value >= 8000) {
       setCharge("120");
-    } else if (value >= 7001) {
-      setCharge("110");
-    } else if (value >= 6401) {
+    } else if (value >= 7500) {
+      setCharge("115");
+    } else if (value >= 7000) {
       setCharge("105");
-    } else if (value >= 6001) {
-      setCharge("95");
-    } else if (value >= 5401) {
+    } else if (value >= 6500) {
+      setCharge("100");
+    } else if (value >= 6000) {
       setCharge("90");
-    } else if (value >= 5001) {
-      setCharge("80");
-    } else if (value >= 4401) {
+    } else if (value >= 5500) {
+      setCharge("85");
+    } else if (value >= 5000) {
       setCharge("75");
-    } else if (value >= 4001) {
-      setCharge("65");
-    } else if (value >= 3401) {
+    } else if (value >= 4500) {
+      setCharge("70");
+    } else if (value >= 4000) {
       setCharge("60");
-    } else if (value >= 3001) {
-      setCharge("50");
-    } else if (value >= 2401) {
+    } else if (value >= 3500) {
+      setCharge("55");
+    } else if (value >= 3000) {
       setCharge("45");
-    } else if (value >= 2001) {
-      setCharge("35");
-    } else if (value >= 1401) {
+    } else if (value >= 2500) {
+      setCharge("40");
+    } else if (value >= 2000) {
       setCharge("30");
+    } else if (value >= 1500) {
+      setCharge("25");
     } else if (value >= 1001) {
       setCharge("20");
-    } else if (value >= 901) {
+    } else if (value >= 900) {
       setCharge("15");
-    } else if (value >= 401) {
+    } else if (value >= 400) {
       setCharge("10");
     } else if (value >= 1) {
       setCharge("5");
